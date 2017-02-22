@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>t</title>
+    <script src="../js/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+
+
+
+
+
+
+
+
+    $("button").click(function(){
+                $("#div1").load("/Auth/file/test.txt",function(responseTxt,statusTxt,xhr){
+                    if(statusTxt=="success"){
+                        alert("外部文件已经成功加载。。。。。。");
+                    }
+            if(statusTxt=="error"){
+                alert("Error:"+xhr.status+":"+xhr.statusText);
+            }
+        });
+
+    });
+
+
+    $("#user").click(function(){
+        $.get("/Auth/user/remove",{
+            user_id:"1"
+        },function(data,status){
+           alert("data:"+data+";"+"\nstatus:"+status);
+        });
+    });
+});
+
+
+
+function qingqiu(){
+    $.ajax({
+        type:"get",
+        url:"/Auth/user/remove",
+        dataType:"json",
+        async:"true",
+        data:{
+            "user_id":"1"
+        },
+        success:function(data){
+            if(data.status==1){
+                alert("");
+            }else
+            {
+
+                for(var i=0;i<data.users.length;i++){
+                    document.querySelector("body").innerHTML=data;
+                    document.querySelector("body").innerHTML=data.users[i]['userId']['userName']['password']['userAccount'];
+                }
+
+            }
+        }
+    });
+}
+</script>
+
+
+</head>
+<body>
+<div  id="div1">
+    <h1>使用ajax加载外部文件</h1>
+</div>
+<button>获取外部类容</button>
+<div id="div2">使用post请求
+<input type="button" onclick="qingqiu()" value="qingqiu"/>
+</div>
+
+</body>
+</html>

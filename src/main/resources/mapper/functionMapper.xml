@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.Auth.dao.FunctionDAO">
+
+    <resultMap id="BaseFunction" type="com.Auth.po.Function">
+        <id column="function_id" property="functionId" jdbcType="INTEGER"/>
+        <result column="function_name" property="functionName" jdbcType="VARCHAR"/>
+        <result column="parent_id" property="parentId" jdbcType="INTEGER"/>
+        <result column="url" property="url" jdbcType="VARCHAR"/>
+        <result column="serial_num" property="serialNum" jdbcType="INTEGER"/>
+        <result column="accordion" property="accordion" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <select id="findAllFunction" resultType="map">
+        select function_id as functionId,function_name as  functionName,parent_id as parentId,url ,serial_num as  serialNum,accordion from auth_function
+    </select>
+
+    <select id="findFunctions" resultMap="BaseFunction">
+        select *from auth_function
+    </select>
+
+    <select id="findFunctionById" parameterType="int" resultMap="BaseFunction">
+        select * from auth_function where function_id =#{functionId}
+    </select>
+
+    <insert id="addFunction" parameterType="map">
+        insert into auth_function (function_Id,function_name,parent_id,url,serial_num,accordion)
+        values(#{functionId},#{functionName},#{parentId},#{url},#{serialNum},#{accordion})
+    </insert>
+
+    <delete id="removeFunctionById" parameterType="int">
+        delete from auth_function where function_id=#{functionId}
+    </delete>
+
+    <delete id="removeFunctionRole" parameterType="int">
+        delete from auth_role_function where function_id=#{functionId}
+    </delete>
+
+    <update id="modifyFunction" parameterType="map">
+        update auth_function set
+        function_name=#{functionName},parent_id=#{parentId},url=#{url},serial_num=#{serialNum},accordion=#{accordion}
+        where function_id=#{functionId}
+
+    </update>
+</mapper>

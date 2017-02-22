@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<excel id="Role" code="Role" name="角色信息导入">
+    <colgroup>
+        <col index="A" width='17em'></col>
+        <col index="B" width='17em'></col>
+    </colgroup>
+    <title>
+        <tr height="16px">
+            <td rowspan="1" colspan="6" value="角色信息导入" />
+        </tr>
+    </title>
+    <thead>
+        <tr height="16px">
+        	<th value="编号" />
+            <th value="角色名" />
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr height="16px" firstrow="2" firstcol="0" repeat="5">
+            <td type="numeric" format="##0" isnullable="false"  /><!--用户编号 -->
+            <td type="string" isnullable="false" maxlength="255" /><!--角色名 -->
+        </tr>
+    </tbody>
+</excel>

@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<excel id="Function" code="Function" name="用户信息导入">
+    <colgroup>
+        <col index="A" width='17em'></col>
+        <col index="B" width='17em'></col>
+        <col index="C" width='17em'></col>
+        <col index="D" width='17em'></col>
+        <col index="E" width='17em'></col>
+        <col index="F" width='17em'></col>
+    </colgroup>
+    <title>
+        <tr height="16px">
+            <td rowspan="1" colspan="6" value="学生信息导入" />
+        </tr>
+    </title>
+    <thead>
+        <tr height="16px">
+        	<th value="编号" />
+            <th value="姓名" />
+            <th value="密码" />
+            <th value="账号" />
+            <th value="账号" />
+            <th value="账号" />
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr height="16px" firstrow="2" firstcol="0" repeat="5">
+            <td type="numeric" format="##0" isnullable="false"  /><!--功能id -->
+            <td type="string" isnullable="false" maxlength="255" /><!--功能姓名 -->
+            <td type="numeric" format="##0" isnullable="false"  /><!--父节点（功能的ID） -->
+            <td type="string" isnullable="false" maxlength="255" /><!--功能对应的路径-->
+            <td type="numeric" format="##0" isnullable="false"  /><!--序列码-->
+            <td type="numeric" format="##0" isnullable="false"  /><!--账号-->
+        </tr>
+    </tbody>
+</excel>
